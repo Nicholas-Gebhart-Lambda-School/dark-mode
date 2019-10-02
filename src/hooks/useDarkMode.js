@@ -8,5 +8,10 @@ export const useDarkMode = () => {
       ? document.querySelector("body").classList.add("dark-mode")
       : document.querySelector("body").classList.remove("dark-mode");
   }, [darkValue]);
-  return [darkValue, setDarkValue];
+
+  const toggleMode = e => {
+    e.preventDefault();
+    setDarkValue(!darkValue);
+  };
+  return [darkValue, toggleMode];
 };
