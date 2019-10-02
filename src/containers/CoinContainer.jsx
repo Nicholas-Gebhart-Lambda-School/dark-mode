@@ -1,7 +1,15 @@
-import React from "react";
-import Chart from "./Chart";
+import React, { useEffect, useState } from "react";
+import { getCoinData } from "../services/cgApi";
 
-const Charts = ({ coinData }) => {
+import Chart from "../components/Chart";
+
+export const CoinContainer = () => {
+  const [coinData, setCoinData] = useState([]);
+
+  useEffect(() => {
+    getCoinData().then(data => setCoinData(data));
+  }, []);
+
   return (
     <div className="charts">
       {coinData.map(coin => (
@@ -17,4 +25,3 @@ const Charts = ({ coinData }) => {
     </div>
   );
 };
-export default Charts;
